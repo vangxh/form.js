@@ -203,77 +203,77 @@ url			: '',				// 请求URL
 			mobile: '^1[0-9]{10}$'  
 		} 
 	});  
-	// 单独配置提示  
-	$.form.config({
-		email: '邮箱格式不正确！',
-		mobile: '手机格式不正确！'
-	}, 'tip');
-	// 单配置规则，注意“\”转义符要写成“\\”双斜线
-	$.form.config({
-		email: '^([a-zA-Z0-9_\\.\\-])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$',
-		mobile: '^1[0-9]{10}$'
-	}, 'regex');
-## 4.2 $.form.error(cb);
-说明：
-	为每项表单对象验证失败后提供回调执行的接口，较少使用。
-参数：
-	参数cb表示回调函数
-使用：
-	# 通常单独设置
-	$.form.rule().error(function() {});
-	# 同样支持链式调用
-	$.form.rule().way().blur().error();
-	# 批量设置，很少使用
-	$.form.error();
-## 4.3 $.form.check(bindSelector, cb, ckObj);
-说明：
-	局部验证。
-参数：
-	参数bindSelector表示绑定click事件的选择器
-	参数cb表示验证通过后执行的回调函数
-	参数ckObj，待验证的局部表单域
-		ckObj === undefined时，则自动验证已存储的部分表单域选择器
-		ckObj类型为字符串时，应以“，”分割的表单域选择器
-		ckObj类型为函数时，应返回以“，”分割的表单域选择器
-使用：
-	$.form.check('#sendMsg', function() {
-		// 验证通过后，相应操作
-	});
-	// username、email验证通过后，则执行回调函数
-	$.form.check('#sendMail', function() {}, 'input[name="username"],input[name="email"]');
-## 4.4 $.form.placeholder(opt);
-说明：
-	实现placeholder效果，focus事件隐藏默认的value值内容，blur事件显示默认的value值内容，支持链式调用
-参数：
-	参数opt通常省略，提供2个函数接口
-	{
-		focus: function() {},
-		blur: function() {}
-	}
-使用：
-	$.form.rule().placeholder();
-	$.form.placeholder();
-## 4.5 $.form.verify(selector, url, action, cb);
-说明：
-	生成验证码
-参数：
-	selector输出验证码的相对位置
-	url 生成验证码的链接
-	action 验证码的插入DOM方式，默认append，当action类型为function时，同cb回调函数，一般用于调整验证码样式
-	cb应为function，可省略，一般用于调整验证码样式
-使用：
-	$.form.verify('#code', '/api/captcha/get', function() {
-		this.css({
-			width: 116,
-			height: 30
-		})
-	});
-	$.form.verify('#code', '/api/captcha/get', 'prepend', function() {});
-## 4.6 $.form.ruleSet(action, pos, rule, g);
-说明：
-	动态新增、修改、删除验证规则，设置验证对象校验状态，默认状态为0，若设置为1则表示该验证对象不作验证
-参数：
-	action表示设置动作，取值[INSERT,MODIFY,DELETE,STATUS]
-	pos表示验证对象在整个表单域验证数组中的索引位置
-	rule规则对象，同$.form.rule()设置
-	g表示表单分组索引，可省略
+	// 单独配置提示    
+	$.form.config({  
+		email: '邮箱格式不正确！',  
+		mobile: '手机格式不正确！'  
+	}, 'tip');  
+	// 单配置规则，注意“\”转义符要写成“\\”双斜线  
+	$.form.config({  
+		email: '^([a-zA-Z0-9_\\.\\-])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$',  
+		mobile: '^1[0-9]{10}$'  
+	}, 'regex');  
+## 4.2 $.form.error(cb);  
+说明：  
+	为每项表单对象验证失败后提供回调执行的接口，较少使用。  
+参数：  
+	参数cb表示回调函数  
+使用：  
+	# 通常单独设置  
+	$.form.rule().error(function() {});  
+	# 同样支持链式调用  
+	$.form.rule().way().blur().error();  
+	# 批量设置，很少使用  
+	$.form.error();  
+## 4.3 $.form.check(bindSelector, cb, ckObj);  
+说明：  
+	局部验证。  
+参数：  
+	参数bindSelector表示绑定click事件的选择器  
+	参数cb表示验证通过后执行的回调函数  
+	参数ckObj，待验证的局部表单域  
+		ckObj === undefined时，则自动验证已存储的部分表单域选择器  
+		ckObj类型为字符串时，应以“，”分割的表单域选择器  
+		ckObj类型为函数时，应返回以“，”分割的表单域选择器  
+使用：  
+	$.form.check('#sendMsg', function() {  
+		// 验证通过后，相应操作  
+	});  
+	// username、email验证通过后，则执行回调函数  
+	$.form.check('#sendMail', function() {}, 'input[name="username"],input[name="email"]');  
+## 4.4 $.form.placeholder(opt);  
+说明：  
+	实现placeholder效果，focus事件隐藏默认的value值内容，blur事件显示默认的value值内容，支持链式调用  
+参数：  
+	参数opt通常省略，提供2个函数接口  
+	{   
+		focus: function() {},  
+		blur: function() {}  
+	}  
+使用：  
+	$.form.rule().placeholder();  
+	$.form.placeholder();  
+## 4.5 $.form.verify(selector, url, action, cb);  
+说明：  
+	生成验证码  
+参数：  
+	selector输出验证码的相对位置  
+	url 生成验证码的链接  
+	action 验证码的插入DOM方式，默认append，当action类型为function时，同cb回调函数，一般用于调整验证码样式  
+	cb应为function，可省略，一般用于调整验证码样式  
+使用：  
+	$.form.verify('#code', '/api/captcha/get', function() {  
+		this.css({  
+			width: 116,  
+			height: 30  
+		})  
+	});  
+	$.form.verify('#code', '/api/captcha/get', 'prepend', function() {});  
+## 4.6 $.form.ruleSet(action, pos, rule, g);  
+说明：  
+	动态新增、修改、删除验证规则，设置验证对象校验状态，默认状态为0，若设置为1则表示该验证对象不作验证  
+参数：  
+	action表示设置动作，取值[INSERT,MODIFY,DELETE,STATUS]  
+	pos表示验证对象在整个表单域验证数组中的索引位置  
+	rule规则对象，同$.form.rule()设置  
+	g表示表单分组索引，可省略  

@@ -312,9 +312,9 @@
 	}
 	function check(H, obj, g, objArr, type) {
 		var chkTof 		= true,
-			childObjArr = [],
+			childObjArr 	= [],
 			Fobj		= null,
-			len			= 0;
+			len		= 0;
 		for (var i in objArr) {
 			Fobj = obj.find(objArr[i]);
 			len	 = Fobj.filter(':visible').length + Fobj.filter('[type="hidden"]').length;

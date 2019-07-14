@@ -49,7 +49,7 @@
 # 三、核心接口
 ## 3.1 $.form.group(grp, action, powForm);
 说明：  
-表单分组接口，必须。  
+	表单分组接口，必须。  
 参数：  
 	1）参数grp，值范围[…-2,-1,0,1,2…true]，整数或true  
 		grp = true表示非正常表单（无<form>标签包裹的表单域，下文将不作说明）  
@@ -121,72 +121,72 @@
 说明：  
 	正常表单提交动作监听  
 参数：  
-参数opt，一般省略  
-{    
+	参数opt，一般省略  
+	{  
 		bindSubmit	: '',			// 外部触发表单提交的选择器  
 		beforeSubmit	: function() {},	// 提交操作，执行验证之前的回调  
 		success		: function() {}		// 验证通过后的回调  
-}  
+	}  
 ## 3.4 $.form.ajxSubmit(opt);
 说明：
-	正常表单ajax方式提交动作监听
-参数：
-	参数opt，一般省略
-	{
-		ajxTip		: '',				// 请求过程序提示
-		errTip		: '',				// 错误提示
-		corTip		: '',				// 正确提示
-		bindSubmit	: '',				// 外部触发表单提交的选择器
-		beforeSubmit	: function() {},		// 提交操作，执行验证之前的回调
-		beforeSend	: function() {},		// ajax请求，发送数据之前的回调
-		success		: function() {},		// ajax请求成功后的回调
-		error		: function() {}		// ajax请求失败后的回调
-	}
+	正常表单ajax方式提交动作监听  
+参数：  
+	参数opt，一般省略  
+	{  
+		ajxTip		: '',			// 请求过程序提示  
+		errTip		: '',			// 错误提示  
+		corTip		: '',			// 正确提示  
+		bindSubmit	: '',			// 外部触发表单提交的选择器  
+		beforeSubmit	: function() {},	// 提交操作，执行验证之前的回调  
+		beforeSend	: function() {},	// ajax请求，发送数据之前的回调  
+		success		: function() {},	// ajax请求成功后的回调  
+		error		: function() {}		// ajax请求失败后的回调  
+	}  
 ## 3.5 $.form.powSubmit(selector, opt);
-说明：
-	非正常表单提交动作监听，支持AJAX及HTTP get方式提交，支持可编辑DIV表单。
-参数：
-	参数opt，必填
+说明：  
+	非正常表单提交动作监听，支持AJAX及HTTP get方式提交，支持可编辑DIV表单。  
+参数：  
+	参数opt，必填  
 	{
-url			: '',				// 请求URL
-		key			: [],				// 表单域name，可省略
-		ajax			: true,			// 默认AJAX方式提交
-		type			: 'post',			// 用于AJAX
-		ajxTip		: '',				// 用于AJAX请求时的加载提示
-		errTip		: '',				// 用于AJAX请求时的错误提示
-		corTip		: '',				// 用于AJAX请求时的正确提示
-		relative		: '',				// 文本域及handle祖先选择器，起限定范围作用
-		beforeSubmit : function() {},		// 提交操作，执行验证之前的回调
-		beforeSend	: function() {},		// ajax请求，发送数据之前的回调
-		success		: function() {},		// ajax请求成功后的回调
-		error		: function() {}		// ajax请求失败后的回调
+		url		: '',			// 请求URL  
+		key		: [],			// 表单域name，可省略  
+		ajax		: true,			// 默认AJAX方式提交  
+		type		: 'post',		// 用于AJAX  
+		ajxTip		: '',			// 用于AJAX请求时的加载提示  
+		errTip		: '',			// 用于AJAX请求时的错误提示  
+		corTip		: '',			// 用于AJAX请求时的正确提示  
+		relative	: '',			// 文本域及handle祖先选择器，起限定范围作用  
+		beforeSubmit 	: function() {},	// 提交操作，执行验证之前的回调  
+		beforeSend	: function() {},	// ajax请求，发送数据之前的回调  
+		success		: function() {},	// ajax请求成功后的回调  
+		error		: function() {}		// ajax请求失败后的回调  
 	}
 ## 3.6 $.form.way(tipWay, tipPos, tipSub);
-说明：
-	设置验证提示方式，可单独设置每一文本域的提示方式、提示位置，也可批量设置；当tipSub === true时，表示设置公共提示方式与提示位置，当tipSub === false 时，表示不设置公共提示，否则则以最后一个验证域的“提示设置”设置公共提示。
-参数：
-	参数tipWay，取值[0,1,2,3]或者[auto,alert,single,none]，表示提式方式。分别表示“自动”、“弹窗”、“单一位置”、“无提示”
-	参数tipPos，提示位置选择器
-	参数tipSub，表示设置公共提示方式及位置
-使用：
-	# 设置username域的验证方式为“弹出窗口式”
-	$.form.rule(' input[name="username"]').way('alert');
-	# 批量设置，在多个$.form.rule()之后加入以下代码
-	$.form.way('single', '#tip');
-	# 支持链式调用
-	$.form.way('none').submit();
+说明：  
+	设置验证提示方式，可单独设置每一文本域的提示方式、提示位置，也可批量设置；当tipSub === true时，表示设置公共提示方式与提示位置，当tipSub === false 时，表示不设置公共提示，否则则以最后一个验证域的“提示设置”设置公共提示。  
+参数：  
+	参数tipWay，取值[0,1,2,3]或者[auto,alert,single,none]，表示提式方式。分别表示“自动”、“弹窗”、“单一位置”、“无提示”  
+	参数tipPos，提示位置选择器  
+	参数tipSub，表示设置公共提示方式及位置  
+使用：  
+	// 设置username域的验证方式为“弹出窗口式”  
+	$.form.rule(' input[name="username"]').way('alert');  
+	// 批量设置，在多个$.form.rule()之后加入以下代码  
+	$.form.way('single', '#tip');  
+	// 支持链式调用  
+	$.form.way('none').submit();  
 #  3.7 $.form.blur(obj);
-说明：
-	失去焦点触发验证函数
-参数：
-	obj表示指定的文本域对象，一般省略
-使用：
-	// 监听rule指定的文本域失去焦点事件
-	$.form.rule().blur();
-	// 批量设置，在多个$.form.rule()之后加入以下代码
-	$.form.blur();
-	// 支持链式调用
-	$.form.blur().submit();
+说明：  
+	失去焦点触发验证函数  
+参数：  
+	obj表示指定的文本域对象，一般省略  
+使用：  
+	// 监听rule指定的文本域失去焦点事件  
+	$.form.rule().blur();  
+	// 批量设置，在多个$.form.rule()之后加入以下代码  
+	$.form.blur();  
+	// 支持链式调用  
+	$.form.blur().submit();  
 # 四、辅助接口
 ## 4.1 $.form.config(opt1, opt2)
 说明：  

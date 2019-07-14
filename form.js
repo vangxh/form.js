@@ -8,20 +8,20 @@
  +-------------------------------------------------------------------
  */
 (function($) {
-	var F	= null,		// 当前表单
+	var 	F	= null,		// 当前表单
 		_F	= [],		// 正常表单
 		F_	= [],		// 构造表单
 		G	= 0,		// 表单分组
 	config	= {
 		// 内置提示
-		tip		: {
+		tip	: {
 			notempty 	: '必填项不能为空',
-			chs			: '只允许汉字',
+			chs		: '只允许汉字',
 			chsAlpha	: '只允许汉字、字母',
 			chsAlphaNum	: '只允许汉字、字母、数字',
 			chsDash		: '只允许汉字、字母、数字、下划线、破折号',
 			digit		: '只允许数字、小数',
-			num			: '只允许数字',
+			num		: '只允许数字',
 			alpha		: '只允许字母',
 			alphaNum	: '只允许字母、数字',
 			alphaDash	: '只允许字母、数字、下划线、破折号',
@@ -31,8 +31,8 @@
 			idCard		: '身份证格式不正确',
 			idPass		: '护照格式不正确',
 			date		: '日期格式不正确',
-			ip			: 'IP地址格式不正确',
-			url			: 'URL地址格式不正确'
+			ip		: 'IP地址格式不正确',
+			url		: 'URL地址格式不正确'
 		},
 		// 内置规则
 		regex	: {
@@ -41,7 +41,7 @@
 			// 非空
 			notempty	: '\\S+',
 			// 仅汉字
-			chs			: '^[\\u4E00-\\u9FA5\\uF900-\\uFA2D]+$',
+			chs		: '^[\\u4E00-\\u9FA5\\uF900-\\uFA2D]+$',
 			// 仅汉字、字母
 			chsAlpha	: '^[\\u4E00-\\u9FA5\\uF900-\\uFA2Da-zA-Z]+$',
 			// 仅汉字、字母、数字
@@ -51,7 +51,7 @@
 			// 有效数字
 			digit		: '^(-?\\d+)(\\.\\d+)?$',
 			// 整数
-			num			: '^-?[1-9][0-9]*|0$',
+			num		: '^-?[1-9][0-9]*|0$',
 			// 仅字母
 			alpha		: '^[A-Za-z]+$',
 			// 字母、数字
@@ -71,9 +71,9 @@
 			// 日期
 			date		: '^(\\d{4})[-\\/](\\d{1}|0\\d{1}|1[0-2])([-\\/](\\d{1}|0\\d{1}|[1-2][0-9]|3[0-1]))*$',
 			// IP
-			ip			: '^(25[0-5]|2[0-4]\\d|[0-1]\\d{2}|[1-9]?\\d)\\.(25[0-5]|2[0-4]\\d|[0-1]\\d{2}|[1-9]?\\d)\\.(25[0-5]|2[0-4]\\d|[0-1]\\d{2}|[1-9]?\\d)\\.(25[0-5]|2[0-4]\\d|[0-1]\\d{2}|[1-9]?\\d)$',
+			ip		: '^(25[0-5]|2[0-4]\\d|[0-1]\\d{2}|[1-9]?\\d)\\.(25[0-5]|2[0-4]\\d|[0-1]\\d{2}|[1-9]?\\d)\\.(25[0-5]|2[0-4]\\d|[0-1]\\d{2}|[1-9]?\\d)\\.(25[0-5]|2[0-4]\\d|[0-1]\\d{2}|[1-9]?\\d)$',
 			// URL
-			url			: '^((http[s]?:)?\\/\\/([\\w-]+\\.)+[\\w-]+|\\/)([\\w-./?%&=]*)?$'
+			url		: '^((http[s]?:)?\\/\\/([\\w-]+\\.)+[\\w-]+|\\/)([\\w-./?%&=]*)?$'
 		}
 	};
 
@@ -147,13 +147,13 @@
 		info == ''
 			? tip.remove()
 			: tip.css({
-				'display'		: 'inline-block',
+				'display'	: 'inline-block',
 				'font-style'	: 'normal',
-				'height'		: '20px',
+				'height'	: '20px',
 				'line-height'	: '18px',
 				'padding-left'	: '20px',
 				'background'	: 'url("data:image/gif;base64,R0lGODlhFACMAPf/AMxsHHCpKPx9HkSMsP/59f/+94nNMebevcXe5vt3HPf372yYsOPv9qvT547TNvn8/flxG/ujbfx6HYS72VSt2ebw9vl3Kfb6/fhuGubv7+/v3u/398uUNfrv3LHR49jm7/qWWom1zvn89ovA3VOq1v3dyrDXfPi0P8Dc6vu2QOuJNv+JJ1qy3f2GI+z1+f7v5vmJRf6BIf7jzN7u9vixdYO51v7u0/f//9be1eurPGK13v+LKpTVQZDD3v++T+bm1v/478/k6N7exv/39/f39+bv5vfv5v/17aTG2fH2+e/v5p3B1cLa5e7Dd+nx9uXz+fX77v3w3Hy7LfiDIl2pzuqUTOP0z8Dane344JPJ5ITFLoC3PO+jZMDglemxUveDIvbQsPl9Ms1uIKPbW36xzXe/4/+PM+jx3Py8lWKpzYO1Qny31c3hs/vp2v/Oeuf01v3LrZfBYU+jzYjH5/H4/P7l1vqEIvXCmeyxTPXYpbPW6f+zc9fs95S80ZPM6frAj5/L4//HZ5LH4p/HapDUOf/s3f7z7Njr9f66Q+ydW/7m0/rn1/+fT/rYnY+9VLbiff7i0f/Thuy+b6/gcPu1iuq4Yf+rZfD26OLw0Pfv3nCx0f7p3P326f+7SP7z5fbgufbNhv7n2e5+IfnPh+bw2djm3c7e1e/v7+/m1tu6Ye/vzubmxc20fefmvXmrxv+RNcigWkydxuV5H8CHGtq5fff35rW1kd7HjObmzunZq9vEnu/mzebexY2MU9W9jrjFrlp7Tam9qt7Ke4Olh2yVdPf33u/vxd7OrPfv1qqofcG9nqp7HZG0tHWmscXWxZazmtatOs7Hq5+ic7/Ov9WtTMCfa+/ev73W2MnMuPfmy7qMOunWl7WMRjt7jObWvebFjPfvzubOmdbWwJScb+bOpZC10Pfm1ubWjM6lHVaYudbOuTaAsViPmebWtc7e7+bm5pq9w+bm3qnKzu/m3ubOte/v987e5vf/92ucxYzSMlWv3Ie+3P+5Qf+HI////////yH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6Qjg1MTZCMzM1MDJGMTFFMzk3NThDMEQzNkE1N0I4RDEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Qjg1MTZCMzQ1MDJGMTFFMzk3NThDMEQzNkE1N0I4RDEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpCODUxNkIzMTUwMkYxMUUzOTc1OEMwRDM2QTU3QjhEMSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpCODUxNkIzMjUwMkYxMUUzOTc1OEMwRDM2QTU3QjhEMSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQz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") 0 ' + -20*lbl + 'px no-repeat',
-				'color'			: col[lbl]
+				'color'		: col[lbl]
 			}).html(info);
 	}
 	// 获取索引
@@ -432,7 +432,7 @@
 		config	: function(opt1, opt2) {
 			switch (opt2) {
 				case 'tip'	: config.tip   = $.extend(config.tip, opt1); break;
-				case 'regex': config.regex = $.extend(config.regex, opt1); break;
+				case 'regex'	: config.regex = $.extend(config.regex, opt1); break;
 				default		: config = $.extend(config, opt1);
 			}
 		},
@@ -447,7 +447,7 @@
 				objArrTmp	: [],		// 临时对象数变量，添加每条rule时临时使用，使用完即清空
 				dataArrTmp	: [],		// 临时数据
 				labelTmp	: 0,		// 执行show函数时存储当前label值
-				placeholder : [],		// 是否为placeholder
+				placeholder 	: [],		// 是否为placeholder
 				errorArr	: [],		// 每项规则验证失败后回调
 				cloneArr	: []		// 默认ruleArr + dataArr 克隆
 			};
@@ -665,7 +665,7 @@
 					type		: 'post',
 					bindSubmit	: '',
 					relative	: H.relative,
-					beforeSubmit: function(){},
+					beforeSubmit	: function(){},
 					beforeSend 	: function(){},
 					success 	: function(){},
 					error		: function(){}
@@ -723,7 +723,7 @@
 				$.ajax({
 					type		: init.type,
 					async		: true,
-					url			: self.attr('action'),
+					url		: self.attr('action'),
 					dataType	: 'json',
 					data		: data,
 					beforeSend	: function() {
@@ -763,16 +763,16 @@
 				submit	= false,
 				defData = {},
 				init	= $.extend({}, {
-					url			: null,
-					key			: [],
-					tof			: true,
+					url		: null,
+					key		: [],
+					tof		: true,
 					ajax		: true,
 					type		: 'post',
 					ajxTip		: '',
 					errTip		: '',
 					corTip		: '',
-					relative	: document,				// 相对祖先选择器
-					beforeSubmit: function() {},
+					relative	: document,	// 相对祖先选择器
+					beforeSubmit	: function() {},
 					beforeSend	: function() {},
 					success		: function() {},
 					error		: function() {}
@@ -812,7 +812,7 @@
 							async		: false,
 							dataType	: 'json',
 							type		: init.type,
-							url			: url,
+							url		: url,
 							data		: data,
 							beforeSend	: function() {
 								// 不带参的hook - beforeSend
@@ -872,8 +872,8 @@
 						defTip	= rule.defTip === undefined ? [] : [rule.defTip],
 						focTip	= rule.focTip === undefined ? [] : [rule.focTip],
 						ajxTip	= rule.ajxTip === undefined ? [] : [rule.ajxTip],
-						hd		= null,
-						fb		= null;
+						hd	= null,
+						fb	= null;
 					F[g].objArrTmp = [];
 					if (rule.rule === undefined) {
 						ruleArr 	= ['notempty'];

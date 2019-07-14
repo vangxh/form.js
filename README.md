@@ -82,7 +82,7 @@
 		corTip: '正确提示',  
 		defTip: '默认提示'，  
 		focTip: '焦点提示',  
-		'ajxTip': '加载提示'  
+		ajxTip: '加载提示'  
 	}  
 	参数corTip表示正确提示  
 	参数defTip表示默认提示  
@@ -99,23 +99,23 @@
 	$.form.rule('input[name="passport"]', 'gt(7)|eq(input[name="repassword"],true)','密码长度大于7');  
 	// eq绑定password域  
 	$.form.rule('input[name="repassword"]', 'eq(input[name="password"],true)',{  
-	errTip: '2次密码输入不一致',  
-	focTip: '请输入密码'  
-});  
+		errTip: '2次密码输入不一致',  
+		focTip: '请输入密码'  
+	});  
 
-// 正则表达式规则  
-$.form.rule('input[name="username"]','notempty|/^[a-z][a-z0-9_]{3,14}$/);  
-// 规则表达式组合，以中括号包含、“|”分割的表达式组合，支持不含“|”的正则，表示或的意思，只要中括号里一项为真则该组合为真  
-$.form.rule('input[name="username"]', 'notempty|[email|mobile|^[a-z][a-z0-9_]{3,14}$]');  
-// 支持表达式取反，取反符号“!”，如下规则“!empty”同“notempty”  
-$.form.rule('input[name="username"]', '!empty');  
-// 特殊符号“#”，仅存在于第一个规则表达式前，主要用于调整类似多个input[name="contact[]"]相同规则名不同对象的验证顺序，例如下面的表单域，如果不加“#”号，则验证顺序为1->3->2->4，加“#”号，则验证顺序为1->2->3->4  
-$.form.rule('input[name="contactName[]"]','#notempty');  
-$.form.rule('input[name="contactMobile []"]','#notempty');  
-1）<input name="contactName[]" />  
-2）<input name="contactMobile[]" />  
-3）<input name="contactName[]" />  
-4）<input name="contactMobile[]" />  
+	// 正则表达式规则  
+	$.form.rule('input[name="username"]','notempty|/^[a-z][a-z0-9_]{3,14}$/);  
+	// 规则表达式组合，以中括号包含、“|”分割的表达式组合，支持不含“|”的正则，表示或的意思，只要中括号里一项为真则该组合为真  
+	$.form.rule('input[name="username"]', 'notempty|[email|mobile|^[a-z][a-z0-9_]{3,14}$]');  
+	// 支持表达式取反，取反符号“!”，如下规则“!empty”同“notempty”  
+	$.form.rule('input[name="username"]', '!empty');  
+	// 特殊符号“#”，仅存在于第一个规则表达式前，主要用于调整类似多个input[name="contact[]"]相同规则名不同对象的验证顺序，例如下面的表单域，如果不加“#”号，则验证顺序为1->3->2->4，加“#”号，则验证顺序为1->2->3->4  
+	$.form.rule('input[name="contactName[]"]','#notempty');  
+	$.form.rule('input[name="contactMobile []"]','#notempty');  
+	1）<input name="contactName[]" />  
+	2）<input name="contactMobile[]" />  
+	3）<input name="contactName[]" />  
+	4）<input name="contactMobile[]" />  
 
 ## 3.3 $.form.submit(opt);  
 说明：  
@@ -192,18 +192,18 @@ url			: '',				// 请求URL
 说明：
 全局配置表单验证规则及提示，可省略
 使用：
-	# 同时配置规则及提示
-	$.form.config({
-		tip: {
-			email: '邮箱格式不正确！',
-			mobile: '手机格式不正确！'
-		},
-		regex: {
-			email: '^([a-zA-Z0-9_\\.\\-])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$',
-			mobile: '^1[0-9]{10}$'
-		}
-	});
-	// 单独配置提示
+	// 同时配置规则及提示  
+	$.form.config({  
+		tip: {  
+			email: '邮箱格式不正确！',  
+			mobile: '手机格式不正确！'  
+		},  
+		regex: {  
+			email: '^([a-zA-Z0-9_\\.\\-])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9]{2,4})+$',  
+			mobile: '^1[0-9]{10}$'  
+		} 
+	});  
+	// 单独配置提示  
 	$.form.config({
 		email: '邮箱格式不正确！',
 		mobile: '手机格式不正确！'
@@ -225,7 +225,7 @@ url			: '',				// 请求URL
 	$.form.rule().way().blur().error();
 	# 批量设置，很少使用
 	$.form.error();
-4.3 $.form.check(bindSelector, cb, ckObj);
+## 4.3 $.form.check(bindSelector, cb, ckObj);
 说明：
 	局部验证。
 参数：
@@ -238,10 +238,10 @@ url			: '',				// 请求URL
 使用：
 	$.form.check('#sendMsg', function() {
 		// 验证通过后，相应操作
-});
-# username、email验证通过后，则执行回调函数
-$.form.check('#sendMail', function() {}, 'input[name="username"],input[name="email"]');
-4.4 $.form.placeholder(opt);
+	});
+	// username、email验证通过后，则执行回调函数
+	$.form.check('#sendMail', function() {}, 'input[name="username"],input[name="email"]');
+## 4.4 $.form.placeholder(opt);
 说明：
 	实现placeholder效果，focus事件隐藏默认的value值内容，blur事件显示默认的value值内容，支持链式调用
 参数：
@@ -253,7 +253,7 @@ $.form.check('#sendMail', function() {}, 'input[name="username"],input[name="ema
 使用：
 	$.form.rule().placeholder();
 	$.form.placeholder();
-4.5 $.form.verify(selector, url, action, cb);
+## 4.5 $.form.verify(selector, url, action, cb);
 说明：
 	生成验证码
 参数：
@@ -263,13 +263,13 @@ $.form.check('#sendMail', function() {}, 'input[name="username"],input[name="ema
 	cb应为function，可省略，一般用于调整验证码样式
 使用：
 	$.form.verify('#code', '/api/captcha/get', function() {
-	this.css({
-		width: 116,
-		height: 30
-	})
-});
-$.form.verify('#code', '/api/captcha/get', 'prepend', function() {});
-4.6 $.form.ruleSet(action, pos, rule, g);
+		this.css({
+			width: 116,
+			height: 30
+		})
+	});
+	$.form.verify('#code', '/api/captcha/get', 'prepend', function() {});
+## 4.6 $.form.ruleSet(action, pos, rule, g);
 说明：
 	动态新增、修改、删除验证规则，设置验证对象校验状态，默认状态为0，若设置为1则表示该验证对象不作验证
 参数：
